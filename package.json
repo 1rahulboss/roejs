@@ -1,0 +1,26 @@
+{
+  "name": "roejs",
+  "version": "1.0.0",
+  "description": "Make your website wonderfull. You can add many effects on image and text",
+  "keywords": [
+    "roejs"
+  ],
+  "homepage": "https://github.com/1rahulboss/roejs#readme",
+  "bugs": {
+    "url": "https://github.com/1rahulboss/roejs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1rahulboss/roejs.git"
+  },
+  "license": "ISC",
+  "author": "Rahul Boss",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "app.js"
+  },
+  "dependencies": {
+    "nodejs": "^0.0.0"
+  }
+}
