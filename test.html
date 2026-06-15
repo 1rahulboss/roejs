@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROE Effects Demo</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 2rem;
+    }
+    #demo {
+      width: 300px;
+      height: 200px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin: 1rem 0;
+    }
+    button {
+      margin: 0.5rem;
+      padding: 8px 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: #333;
+      color: white;
+    }
+    button:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <h2>ROE.js Effects Test</h2>
+  <div id="demo">Effect me!</div>
+  <div>
+    <button id="btnBlurStatic">Blur (static method)</button>
+    <button id="btnGrayStatic">Grayscale (static method)</button>
+    <button id="btnBlurInstance">Blur (instance)</button>
+    <button id="btnGrayInstance">Grayscale (instance)</button>
+    <button id="btnChain">Chain: Gray → Blur</button>
+  </div>
+
+  <script type="module">
+    import roe from './roe.js';
+
+    // ----- Static method usage (one‑off) -----
+    document.getElementById('btnBlurStatic').onclick = () => {
+      roe.imgEffect('#demo', {
+        effect: 'blur',
+        blurAmount: '8px',
+        duration: 400,
+        easing: 'ease-in-out'
+      });
+    };
+
+    document.getElementById('btnGrayStatic').onclick = () => {
+      roe.imgEffect('#demo', {
+        effect: 'gray',
+        duration: 400,
+        easing: 'ease-in-out'
+      });
+    };
+
+    // ----- Instance method usage (reuse same element) -----
+    const demoInstance = new roe('#demo', {
+      effect: 'none',
+      duration: 300
+    });
+
+    document.getElementById('btnBlurInstance').onclick = () => {
+      demoInstance.setEffect('blur', { blurAmount: '12px' });
+    };
+
+    document.getElementById('btnGrayInstance').onclick = () => {
+      demoInstance.setEffect('gray');
+    };
+
+    // ----- Chaining example -----
+    document.getElementById('btnChain').onclick = () => {
+      new roe('#demo')
+        .setEffect('gray', { duration: 300 })
+        .setEffect('blur', { blurAmount: '6px', duration: 300 });
+    };
+  </script>
+</body>
+</html>

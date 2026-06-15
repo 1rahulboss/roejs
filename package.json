@@ -18,7 +18,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "app.js"
+    "test": "test.js"
   },
   "dependencies": {
     "nodejs": "^0.0.0"
